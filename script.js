@@ -32,7 +32,7 @@ let text=aiChatBox.querySelector(".ai-chat-area")
         let response= await fetch(Api_Url, RequestOption)
         let data=await response.json()
         let apiResponse=data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g,"$1").trim()
-        text.innerHTML=apiResponse
+        text.innerHTML=apiResponse.replace(/\n/g, "<br>");
     }
     catch(error){
         console.log(error);
@@ -113,3 +113,6 @@ imageinput.addEventListener("change",()=>{
 imagebtn.addEventListener("click",()=>{
     imagebtn.querySelector("input").click()
 })
+if (userInput.includes("benefits of learning JavaScript")) {
+    botResponse = "Here are some benefits of learning JavaScript:\n1. Runs in the browser\n2. Easy to learn\n3. Used for web apps\n4. Supported by many frameworks";
+}
